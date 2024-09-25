@@ -1,0 +1,63 @@
+@use "../../styles/mixins" as *;
+
+@mixin background-main-section () {
+    border-radius: 1.563em;
+    height: 14em;
+    width: 100%;
+}
+
+.main-section {
+    position: relative;
+    background-image: url("../../assets/background-image-main-title.png");
+    background-position: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.625em;
+    @include background-main-section();
+    @include max-width();
+
+    &::after {
+        content: "";
+        position: absolute;
+        opacity: 0.6;
+        background-color: #000;
+        @include background-main-section();
+    }
+
+    h1 {
+        z-index: 1;
+    }
+}
+
+.card-section {
+    background-color: #F6F6F6;
+    border-radius: 1.563em;
+    display: grid;
+    grid-template: repeat(2, 21.25em) / repeat(3, 21.25em);
+    column-gap: 60px;
+    row-gap: 50px;
+    padding: 3.5em 3.125em 2.75em 3.125em;
+    @include max-width();
+}
+
+.card {
+    position: relative;
+    border-radius: 0.625em;
+    width: 100%;
+    height: 100%;
+
+    &__img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    &__title {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}
