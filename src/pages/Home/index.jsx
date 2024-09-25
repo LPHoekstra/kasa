@@ -1,5 +1,6 @@
 import "./index.scss"
 import annonces from "./../../annonces.json"
+import Card from "../../components/Card"
 
 function Home() {
     return (
@@ -10,10 +11,7 @@ function Home() {
 
             <section className="card-section">
                 {annonces.slice(0, 6).map((annonce) => (
-                    <article key={annonce.id} className="card">
-                        <img src={annonce.cover} alt={annonce.title} className="card__img" />
-                        <h2 className="card__title">{annonce.title}</h2>
-                    </article>
+                    <Card key={annonce.id} card={annonce} />
                 ))}
             </section>
         </main>

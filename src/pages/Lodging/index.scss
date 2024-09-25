@@ -1,0 +1,37 @@
+@use "./../../styles/mixins" as *;
+
+.lodgement-section {
+    @include max-width()
+}
+
+.carousel {
+    position: relative;
+    height: 25.938em;
+    
+    &__img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__arrow-left {
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+
+    &__arrow-right {
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+
+    &__number {
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+        font-size: 1.125em;
+        font-weight: 500;
+        color: #fff;
+    }
+}

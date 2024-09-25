@@ -35,29 +35,10 @@
     background-color: #F6F6F6;
     border-radius: 1.563em;
     display: grid;
-    grid-template: repeat(2, 21.25em) / repeat(3, 21.25em);
-    column-gap: 60px;
-    row-gap: 50px;
-    padding: 3.5em 3.125em 2.75em 3.125em;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    column-gap: min(4.16vw, 3.75em);
+    row-gap: min(3.47vw, 3.125em);
+    padding: min(3.88vw, 3.5em) min(3.47vw, 3.125em) min(3.05vw, 2.75em) min(3.47vw, 3.125em);
+    height: min(57.56vw, 51.875em);
     @include max-width();
-}
-
-.card {
-    position: relative;
-    border-radius: 0.625em;
-    width: 100%;
-    height: 100%;
-
-    &__img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-    }
-
-    &__title {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
 }
