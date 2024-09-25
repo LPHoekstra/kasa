@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 77.5em;
+    margin: 2.813em auto 3.125em auto;
+
+    &__link {
+        font-weight: 500;
+        font-size: 1.5em;
+        margin-left: 3.5em;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
