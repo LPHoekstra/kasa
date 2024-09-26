@@ -1,4 +1,5 @@
-@use "./../../styles/mixins" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
 
 .lodgement-section {
     @include max-width()
@@ -12,18 +13,21 @@
         object-fit: cover;
         width: 100%;
         height: 100%;
+        border-radius: 25px;
     }
 
     &__arrow-left {
         position: absolute;
         left: 0;
         top: 50%;
+        transform: translateY(-50%);
     }
 
     &__arrow-right {
         position: absolute;
         right: 0;
         top: 50%;
+        transform: translateY(-50%);
     }
 
     &__number {
@@ -33,5 +37,54 @@
         font-size: 1.125em;
         font-weight: 500;
         color: #fff;
+    }
+}
+
+.location-and-host-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1.875em;
+}
+
+.location-container {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-weight: 500;
+        font-size: 36px;
+        color: $main-color;
+    }
+
+    &__location {
+        font-weight: 500;
+        font-size: 1.125em;
+    }
+
+    &__tags-wrapper {
+        display: flex;
+    }
+}
+
+.host-rating-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.host-container {
+    display: flex;
+    flex-direction: row;
+
+    &__img {
+        border-radius: 50%;
+        height: 4em;
+        width: 4em;
+    }
+
+    &__name {
+        color: $main-color;
+        font-size: 1.125em;
+        font-weight: 500;
     }
 }

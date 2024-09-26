@@ -26,8 +26,19 @@
         @include background-main-section();
     }
 
-    h1 {
+    &__title {
         z-index: 1;
+        font-weight: 700;
+        font-size: 3em;
+        color: #fff;
+        text-shadow:
+            -1px -1px 0 black,
+            /* for text line */
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black,
+            0 4px 4px rgba(0, 0, 0, 0.25);
+        /* for the drop shadow */
     }
 }
 
@@ -41,4 +52,5 @@
     padding: min(3.88vw, 3.5em) min(3.47vw, 3.125em) min(3.05vw, 2.75em) min(3.47vw, 3.125em);
     height: min(57.56vw, 51.875em);
     @include max-width();
+    margin-bottom: 3.125em;
 }
