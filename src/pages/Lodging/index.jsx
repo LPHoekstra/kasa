@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { useParams } from "react-router-dom"
 import lodgings from "../../lodging.json"
-import arrowLeft from "./../../assets/arrow-left.svg"
-import arrowRight from "./../../assets/arrow-right.svg"
+import arrowLeft from "../../assets/arrow-left.svg"
+import arrowRight from "../../assets/arrow-right.svg"
 import "./index.scss"
+import Dropdown from "../../components/Dropdown"
 
 function Lodging() {
     const param = useParams()
@@ -25,27 +26,33 @@ function Lodging() {
                             <div className="location-container">
                                 <h1 className="location-container__title">{lodging.title}</h1>
                                 <p className="location-container__location">{lodging.location}</p>
-                                <div className="location-container__tags-wrapper">
+                                <div className="tags-wrapper">
                                     {lodging.tags.map(tag => (
-                                        <p key={tag}>{tag}</p>
+                                        <span key={tag} className="tags-wrapper__tag">{tag}</span>
                                     ))}
                                 </div>
                             </div>
                             <div className="host-rating-container">
                                 <div className="host-container">
-                                    <img src={lodging.host.picture} alt={lodging.host.name} className="host-container__img"/>
-                                    <p className="host-container__name">{lodging.host.name}</p>
+                                    <p className="host-container__name">
+                                        {lodging.host.name.split(" ")[0]}<br />
+                                        {lodging.host.name.split(" ")[1]}</p>
+                                    <img src={lodging.host.picture} alt={lodging.host.name} className="host-container__img" />
                                 </div>
                                 <div>{lodging.rating}</div>
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                Description
-                            </div>
-                            <div>
-                                Equipements
-                            </div>
+                        <div className="dropdown-bar">
+                            <Dropdown title="Description">
+                                <p>{lodging.description}</p>
+                            </Dropdown>
+                            <Dropdown title="Equipements">
+                                <ul>
+                                    {lodging.equipments.map(equipment => (
+                                        <li key={equipment}>{equipment}</li>
+                                    ))}
+                                </ul>
+                            </Dropdown>
                         </div>
                     </section>
                 ))

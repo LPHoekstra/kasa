@@ -2,7 +2,8 @@
 @use "../../styles/variables" as *;
 
 .lodgement-section {
-    @include max-width()
+    @include max-width();
+    margin-bottom: 3.125em;
 }
 
 .carousel {
@@ -10,24 +11,18 @@
     height: 25.938em;
     
     &__img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+        @include cover-img();
         border-radius: 25px;
     }
 
     &__arrow-left {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        @include center-absolute ();
+        left: 1.438em;
     }
 
     &__arrow-right {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        @include center-absolute ();
+        right: 1.438em;
     }
 
     &__number {
@@ -41,19 +36,19 @@
 }
 
 .location-and-host-container {
-    display: flex;
-    flex-direction: row;
+    @include flex ();
     justify-content: space-between;
     margin-top: 1.875em;
+    padding-bottom: 1.5em;
+    background-color: #fff;
 }
 
 .location-container {
-    display: flex;
-    flex-direction: column;
+    @include flex ($direction: column);
 
     &__title {
         font-weight: 500;
-        font-size: 36px;
+        font-size: 2.25em;
         color: $main-color;
     }
 
@@ -61,20 +56,30 @@
         font-weight: 500;
         font-size: 1.125em;
     }
+}
 
-    &__tags-wrapper {
-        display: flex;
+.tags-wrapper {
+    @include flex ();
+    gap: 0.625em;
+    margin-top: 1.25em;
+
+    &__tag {
+        color: #fff;
+        background-color: $main-color;
+        border-radius: 0.625em;
+        padding: 0.188em 0.625em;
+        min-width: 7.188;
+        text-align: center;
     }
 }
 
 .host-rating-container {
-    display: flex;
-    flex-direction: column;
+    @include flex ($direction: column);
 }
 
 .host-container {
-    display: flex;
-    flex-direction: row;
+    @include flex ();
+    align-items: center;
 
     &__img {
         border-radius: 50%;
@@ -86,5 +91,12 @@
         color: $main-color;
         font-size: 1.125em;
         font-weight: 500;
+        text-align: right;
+        margin-right: 0.625em;
     }
+}
+
+.dropdown-bar {
+    @include flex ();
+    gap: min(5.27vw, 4.75em);
 }
