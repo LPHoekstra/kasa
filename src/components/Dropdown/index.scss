@@ -1,17 +1,10 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-@keyframes translate-menu {
-    0%{
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
 .dropdown {
     width: 100%;
+    position: relative;
+    overflow: hidden;
     
     &__bar {
         @include flex();
@@ -27,21 +20,31 @@
         color: #fff;
         font-size: 1.125em;
     }
-
+    
     &__content {
-        position: relative;
+        position: absolute;
         margin-top: -0.625em;
-        z-index: -1;
         background-color: rgba($color: #F6F6F6, $alpha: 0.45);
-        padding: 1.625em 1.25em 1.25em 1.25em;
         font-size: 1.125em;
+        padding: 1.625em 1.25em 1.25em 1.25em;
+        z-index: -1;
         transform-origin: top;
-        animation: forwards 300ms ease-out translate-menu;
+        transform: translateY(0);
+        transition: transform 300ms ease-out;
+        width: 100%;
         
         &--hidden {
-            animation-direction: reverse;
-            display: none;
+            transform: translateY(-100%);
         }
+    }
+
+    &__content-spacing {
+        position: relative;
+        margin-top: -0.625em;
+        padding-top: 0.625em;
+        height: 0;
+        transition: height 300ms ease-out;
+        width: 100%;
     }
 
     &__arrow {
@@ -49,7 +52,11 @@
         
         &--active {
             transform: rotate(-180deg);
-            transition: transform 300ms ease-out;
         }
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
     }
 }
