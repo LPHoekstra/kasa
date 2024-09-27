@@ -1,30 +1,26 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { useNavigate, useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import lodgings from "../../lodging.json"
 import arrowLeft from "../../assets/arrow-left.svg"
 import arrowRight from "../../assets/arrow-right.svg"
 import "./index.scss"
 import Dropdown from "../../components/Dropdown"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 function Lodging() {
     const param = useParams()
-    const navigate = useNavigate()
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
 
+    // if no lodging as been found in the filter he's redirected
+    if (!filteredLodging) {
+        return <Navigate to={"/error"} />
+    }
+    
     const handleSlideChange = (i) => {
         let count = (slideNumber + i + filteredLodging.pictures.length) % filteredLodging.pictures.length
         setSlideNumber(count)
     }
-    
-    useEffect(() => {
-        const lodgingExists = lodgings.some(lodging => param.id === lodging.id)
-        if (!lodgingExists) {
-            navigate("/error")
-        }
-
-    }, [param.id, navigate])
 
     return (
         <main>
