@@ -1,13 +1,23 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import lodgings from "../../lodging.json"
 import arrowLeft from "../../assets/arrow-left.svg"
 import arrowRight from "../../assets/arrow-right.svg"
 import "./index.scss"
 import Dropdown from "../../components/Dropdown"
+import { useEffect } from "react"
 
 function Lodging() {
     const param = useParams()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const lodgingExists = lodgings.some(lodging => param.id === lodging.id)
+        if (!lodgingExists) {
+            navigate("/error")
+        }
+
+    }, [param.id, navigate])
 
     return (
         <main>
