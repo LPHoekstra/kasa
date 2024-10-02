@@ -2,21 +2,43 @@
 
 .header {
     margin: 0 min(6.94vw, 6.25em);
-    
+
+    @include small-screen() {
+        margin: 0 5.33vw;
+    }
+
     &__wrapper {
         @include flex($justify: space-between, $align: center);
-        max-width: 77.5em;
-        margin: 2.813em auto 0 auto;
+        @include max-width();
+        margin-top: 2.813em;
+
+        @include small-screen() {
+            margin-top: 1.25em;
+        }
+    }
+
+    &__navbar {
+        display: flex;
+        font-weight: 500;
+        font-size: 1.5em;
+        gap: 3.5em;
+        
+        @include small-screen() {
+            font-size: 0.75em;
+        }
+        
+        & > a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
 
     }
 
-    &__link {
-        font-weight: 500;
-        font-size: 1.5em;
-        margin-left: 3.5em;
-
-        &:hover {
-            text-decoration: underline;
+    &__kasa {
+        @include small-screen() {
+            width: 145px;
+            height: 47px;
         }
     }
 }

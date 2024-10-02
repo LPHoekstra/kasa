@@ -4,6 +4,11 @@
     border-radius: 1.563em;
     height: 14em;
     width: 100%;
+
+    @include small-screen() {
+        height: 7em;
+        border-radius: 0.625em;
+    }
 }
 
 .main-section {
@@ -16,9 +21,19 @@
     @include background-main-section();
     @include max-width();
 
+    @include small-screen() {
+        margin-top: 1.688em;
+        margin-bottom: 1.375em;
+        box-shadow: none;
+        padding-left: 4.26vw;
+        justify-content: flex-start;
+    }
+
     &::after {
         content: "";
         position: absolute;
+        top: 0;
+        left: 0;
         opacity: 0.6;
         background-color: #000;
         @include background-main-section();
@@ -35,6 +50,12 @@
             -1px 1px 0 black,
             1px 1px 0 black,
             0 4px 4px rgba(0, 0, 0, 0.25); /* for the drop shadow */
+
+        @include small-screen() {
+            font-size: 1.5em;
+            text-shadow: none;
+            max-width: 9.5em;
+        }
     }
 }
 

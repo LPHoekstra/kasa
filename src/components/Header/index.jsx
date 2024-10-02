@@ -7,11 +7,11 @@ function Header() {
         <header className="header">
             <div className="header__wrapper">
                 <Link to="/">
-                    <img src={logo} alt="Logo de Kasa" />
+                    <img src={logo} alt="Logo de Kasa" className="header__kasa"/>
                 </Link>
-                <nav>
-                    <Link to="/" className="header__link">Accueil</Link>
-                    <Link to="/a-propos" className="header__link">A Propos</Link>
+                <nav className="header__navbar">
+                    <Link to="/">Accueil</Link>
+                    <Link to="/a-propos">A Propos</Link>
                 </nav>
             </div>
         </header>
