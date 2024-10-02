@@ -5,12 +5,23 @@
     @include max-width();
     margin-top: 3.125em;
     margin-bottom: 3.125em;
+
+    // specifique size to the lodging page
+    .dropdown {
+        &__bar {
+            padding: 0.625em 1.25em 0.625em 0.625em;
+        }
+
+        &__title {
+            font-size: 1.125em;
+        }
+    }
 }
 
 .carousel {
     position: relative;
     height: 25.938em;
-    
+
     &__img {
         @include cover-img();
         border-radius: 25px;

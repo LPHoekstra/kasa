@@ -14,9 +14,10 @@ function Dropdown({ title, children }) {
 
     return (
         <div className="dropdown">
-            <div className="dropdown__bar" onClick={() => setIsOpen(!isOpen)}>
+            <div className="dropdown__bar">
                 <h2 className="dropdown__title">{title}</h2>
                 <img src={arrowDropdown} alt="déroulement du menu"
+                    onClick={() => setIsOpen(!isOpen)}
                     className={`dropdown__arrow ${isOpen ? "dropdown__arrow--active" : ""}`} />
             </div>
             <div className={`dropdown__content ${isOpen ? "" : "dropdown__content--hidden"}`}

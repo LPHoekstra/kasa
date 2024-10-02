@@ -7,18 +7,14 @@
     overflow: hidden;
     
     &__bar {
-        @include flex();
-        justify-content: space-between;
+        @include flex ($justify: space-between);
         background-color: $main-color;
-        border-radius: 0.625em;
-        padding: 0.625em 1.25em 0.625em 0.625em;
-        cursor: pointer;
+        border-radius: 0.313em;
     }
     
     &__title {
         font-weight: 700;
         color: #fff;
-        font-size: 1.125em;
     }
     
     &__content {
@@ -49,6 +45,7 @@
 
     &__arrow {
         transition: transform 300ms ease-out;
+        cursor: pointer;
         
         &--active {
             transform: rotate(-180deg);

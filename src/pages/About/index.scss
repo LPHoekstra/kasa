@@ -1,0 +1,48 @@
+.about-section {
+    max-width: 1240px;
+    margin: 2.375em auto;
+
+    &__img-container {
+        position: relative;
+        height: 14em;
+        width: 100%;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.563em;
+            background-color: rgba($color: #000000, $alpha: 0.30)
+        }
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        border-radius: 1.563em;
+        object-fit: cover;
+    }
+
+    // specifique size to the About page
+    .dropdown {
+        &__bar {
+            padding: 0.625em 0.938em;
+        }
+
+        &__title {
+            font-size: 1.5em;
+        }
+    }
+}
+
+.dropdown-container {
+    margin: 0 6.75em;
+    padding-top: 0.5em;
+
+    &>div {
+        margin-top: 1.875em;
+    }
+}
