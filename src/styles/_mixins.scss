@@ -4,9 +4,11 @@
     margin-right: auto;
 }
 
-@mixin flex ($direction: row) {
+@mixin flex($direction: row, $justify: normal, $align: normal) {
     display: flex;
     flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
 }
 
 @mixin center-absolute () {

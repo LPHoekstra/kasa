@@ -50,6 +50,7 @@
         font-weight: 500;
         font-size: 2.25em;
         color: $main-color;
+        margin-bottom: 2px;
     }
 
     &__location {
@@ -74,12 +75,12 @@
 }
 
 .host-rating-container {
-    @include flex ($direction: column);
+    @include flex ($direction: column, $justify: space-between);
 }
 
 .host-container {
-    @include flex ();
-    align-items: center;
+    @include flex ($align: center, $justify: flex-end);
+    gap: 0.625em;
 
     &__img {
         border-radius: 50%;
@@ -92,8 +93,14 @@
         font-size: 1.125em;
         font-weight: 500;
         text-align: right;
-        margin-right: 0.625em;
     }
+}
+
+.rating-container {
+    @include flex();
+    gap: 0.875em;
+    margin-right: 0.313em;
+    margin-bottom: 0.813em;
 }
 
 .dropdown-bar {

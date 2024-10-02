@@ -1,10 +1,10 @@
+@use "../../styles/mixins" as *;
+
 .header {
     margin: 0 min(6.94vw, 6.25em);
     
     &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex($justify: space-between, $align: center);
         max-width: 77.5em;
         margin: 2.813em auto 0 auto;
 

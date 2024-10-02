@@ -5,12 +5,28 @@ import arrowLeft from "../../assets/arrow-left.svg"
 import arrowRight from "../../assets/arrow-right.svg"
 import "./index.scss"
 import Dropdown from "../../components/Dropdown"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import starActive from "../../assets/star-active.svg"
+import starInactive from "../../assets/star-inactive.svg"
 
 function Lodging() {
     const param = useParams()
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
+    
+    const [starArray, setStarArray] = useState([])
+    useEffect(() => {
+        const newStarArray = []
+        for (let i = 0; i < 5; i++) {
+            if (Number(filteredLodging.rating) > i) {
+                newStarArray.push(true)
+            } else {
+                newStarArray.push(false)
+            }
+        }
+
+        setStarArray(newStarArray)
+    }, [filteredLodging.rating])
 
     // if no lodging as been found in the filter he's redirected
     if (!filteredLodging) {
@@ -54,7 +70,12 @@ function Lodging() {
                                 {filteredLodging.host.name.split(" ")[1]}</p>
                             <img src={filteredLodging.host.picture} alt={filteredLodging.host.name} className="host-container__img" />
                         </div>
-                        <div>{filteredLodging.rating}</div>
+                        {/* stars rating */}
+                        <div className="rating-container">
+                        {starArray.map((isRate, index) => (
+                            <img src={isRate ? starActive : starInactive} alt="star" key={index}/>                  
+                        ))}
+                        </div>
                     </div>
                 </div>
                 <div className="dropdown-bar">
