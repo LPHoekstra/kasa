@@ -5,14 +5,16 @@ import Card from "../../components/Card"
 function Home() {
     return (
         <main>
-            <section className="main-section">
-                <h1 className="main-section__title">Chez vous, partout et ailleurs</h1>
-            </section>
+            <section>
+                <div className="header-wrapper">
+                    <h1 className="header-wrapper__title">Chez vous, partout et ailleurs</h1>
+                </div>
 
-            <section className="card-section">
-                {lodgings.slice(0, 6).map((lodging) => (
-                    <Card key={lodging.id} card={lodging} />
-                ))}
+                <div className="card-wrapper">
+                    {lodgings.slice(0, 6).map((lodging) => (
+                        <Card key={lodging.id} card={lodging} />
+                    ))}
+                </div>
             </section>
         </main>
     )

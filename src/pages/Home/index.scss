@@ -1,6 +1,7 @@
 @use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
 
-@mixin background-main-section () {
+@mixin background-header () {
     border-radius: 1.563em;
     height: 14em;
     width: 100%;
@@ -11,16 +12,17 @@
     }
 }
 
-.main-section {
+.header-wrapper {
     position: relative;
     background-image: url("../../assets/background-image-main-title.png");
     background-position: center;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 3.125em 0 2.625em 0;
-    @include flex($justify: center, $align: center);
-    @include background-main-section();
+    margin-top: 3.125em;
+    margin-bottom: 2.625em;
     @include max-width();
-
+    @include flex($justify: center, $align: center);
+    @include background-header();
+    
     @include small-screen() {
         margin-top: 1.688em;
         margin-bottom: 1.375em;
@@ -36,7 +38,7 @@
         left: 0;
         opacity: 0.6;
         background-color: #000;
-        @include background-main-section();
+        @include background-header();
     }
 
     &__title {
@@ -45,11 +47,13 @@
         font-size: 3em;
         color: #fff;
         text-shadow:
-            -1px -1px 0 black, /* for text line */
+            -1px -1px 0 black,
+            /* for text line */
             1px -1px 0 black,
             -1px 1px 0 black,
             1px 1px 0 black,
-            0 4px 4px rgba(0, 0, 0, 0.25); /* for the drop shadow */
+            0 4px 4px rgba(0, 0, 0, 0.25);
+        /* for the drop shadow */
 
         @include small-screen() {
             font-size: 1.5em;
@@ -59,7 +63,7 @@
     }
 }
 
-.card-section {
+.card-wrapper {
     background-color: #F6F6F6;
     border-radius: 1.563em;
     display: grid;
@@ -68,6 +72,14 @@
     row-gap: min(3.47vw, 3.125em);
     padding: min(3.88vw, 3.5em) min(3.47vw, 3.125em) min(3.05vw, 2.75em) min(3.47vw, 3.125em);
     height: min(57.56vw, 51.875em);
-    @include max-width();
     margin-bottom: 3.125em;
+    @include max-width();
+
+    @include small-screen() {
+        @include flex($direction: column);
+        height: 100%;
+        padding: 0;
+        background-color: $secondary-color;
+        row-gap: 5.33vw;
+    }
 }

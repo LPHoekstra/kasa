@@ -1,3 +1,5 @@
+@use "../../styles/mixins" as *;
+
 .about-section {
     max-width: 1240px;
     margin: 2.375em auto;
@@ -20,10 +22,8 @@
     }
 
     &__img {
-        height: 100%;
-        width: 100%;
+        @include cover-img();
         border-radius: 1.563em;
-        object-fit: cover;
     }
 
     // specifique size to the About page
