@@ -6,6 +6,11 @@
     margin-top: 3.125em;
     margin-bottom: 3.125em;
 
+    @include small-screen() {
+        margin-top: 1.688em;
+        margin-bottom: 1.688em;
+    }
+
     // specifique size to the lodging page
     .dropdown {
         &__bar {
@@ -15,6 +20,8 @@
         &__title {
             font-size: 1.125em;
         }
+
+        @include dropdown-small-screen();
     }
 }
 
@@ -22,36 +29,65 @@
     position: relative;
     height: 25.938em;
 
+    @include small-screen() {
+        height: 15.938em;
+    }
+
     &__img {
         @include cover-img();
         border-radius: 25px;
     }
 
-    &__arrow-left {
+    &__arrow {
         @include center-absolute ();
-        left: 1.438em;
-    }
 
-    &__arrow-right {
-        @include center-absolute ();
-        right: 1.438em;
+        @include small-screen() {
+            height: 5.33vw;
+            width: 3.2vw;
+        }
+
+        &--left {
+            left: 1.438em;
+
+            @include small-screen() {
+                left: 1.6vw;
+            }
+        }
+
+        &--right {
+            right: 1.438em;
+
+            @include small-screen() {
+                right: 1.6vw;
+            }
+        }
     }
 
     &__number {
         position: absolute;
-        bottom: 0;
+        bottom: 1.563em;
         right: 50%;
+        transform: translateX(50%);
         font-size: 1.125em;
         font-weight: 500;
-        color: #fff;
+        color: $secondary-color;
+
+        @include small-screen() {
+            bottom: 0.75em;
+        }
     }
 }
 
 .location-and-host-container {
-    @include flex ();
-    justify-content: space-between;
+    @include flex ($justify: space-between);
     margin-top: 1.875em;
-    padding-bottom: 1.5em;
+    margin-bottom: 1.5em;
+
+    @include small-screen() {
+        flex-direction: column;
+        margin-top: 0.938em;
+        margin-bottom: 0.813em;
+    }
 }
 
 .location-container {
@@ -62,11 +98,20 @@
         font-size: 2.25em;
         color: $main-color;
         margin-bottom: 2px;
+
+        @include small-screen() {
+            font-size: 1.125em;
+            margin-bottom: 0.313em;
+        }
     }
 
     &__location {
         font-weight: 500;
         font-size: 1.125em;
+
+        @include small-screen() {
+            font-size: 0.875em;
+        }
     }
 }
 
@@ -75,28 +120,55 @@
     gap: 0.625em;
     margin-top: 1.25em;
 
+    @include small-screen() {
+        margin-top: 0.625em;
+    }
+
     &__tag {
-        color: #fff;
+        color: $secondary-color;
         background-color: $main-color;
-        border-radius: 0.625em;
-        padding: 0.188em 0.625em;
-        min-width: 7.188;
+        border-radius: 0.625rem;
+        padding: 0.188rem 0.625rem;
+        min-width: 7.188rem;
         text-align: center;
+        font-size: 0.875em;
+        font-weight: 700;
+
+        @include small-screen() {
+            border-radius: 0.313rem;
+            min-width: 5.25rem;
+            font-size: 0.625em;
+        }
     }
 }
 
 .host-rating-container {
     @include flex ($direction: column, $justify: space-between);
+
+    @include small-screen() {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0.813em;
+    }
 }
 
 .host-container {
     @include flex ($align: center, $justify: flex-end);
     gap: 0.625em;
 
+    @include small-screen() {
+        order: 1;
+    }
+
     &__img {
         border-radius: 50%;
         height: 4em;
         width: 4em;
+
+        @include small-screen() {
+            height: 2em;
+            width: 2em;
+        }
     }
 
     &__name {
@@ -104,6 +176,10 @@
         font-size: 1.125em;
         font-weight: 500;
         text-align: right;
+
+        @include small-screen() {
+            font-size: 0.75em;
+        }
     }
 }
 
@@ -112,9 +188,20 @@
     gap: 0.875em;
     margin-right: 0.313em;
     margin-bottom: 0.813em;
+
+    @include small-screen() {
+        height: 0.813em;
+        width: 0.813em;
+        margin: 0;
+    }
 }
 
 .dropdown-bar {
     @include flex ();
     gap: min(5.27vw, 4.75em);
+
+    @include small-screen() {
+        flex-direction: column;
+        gap: 1.25em;
+    }
 }

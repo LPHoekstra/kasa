@@ -5,18 +5,26 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    
+
     &__bar {
-        @include flex ($justify: space-between);
+        @include flex ($justify: space-between, $align: center);
         background-color: $main-color;
         border-radius: 0.313em;
+
+        // @include small-screen() {
+        //     padding: 0.625em;
+        // }
     }
-    
+
     &__title {
         font-weight: 700;
-        color: #fff;
+        color: $secondary-color;
+
+        // @include small-screen() {
+        //     font-size: 0.813em;
+        // }
     }
-    
+
     &__content {
         position: absolute;
         margin-top: -0.625em;
@@ -28,7 +36,11 @@
         transform: translateY(0);
         transition: transform 300ms ease-out;
         width: 100%;
-        
+
+        @include small-screen() {
+            font-size: 0.75em;
+        }
+
         &--hidden {
             transform: translateY(-100%);
         }
@@ -46,7 +58,12 @@
     &__arrow {
         transition: transform 300ms ease-out;
         cursor: pointer;
-        
+
+        @include small-screen() {
+            width: 1em;
+            height: 0.563em;
+        }
+
         &--active {
             transform: rotate(-180deg);
         }

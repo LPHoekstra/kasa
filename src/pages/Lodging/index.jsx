@@ -45,10 +45,10 @@ function Lodging() {
                 <div className="carousel">
                     <img src={filteredLodging.pictures[slideNumber]} alt={filteredLodging.title} className="carousel__img" />
                     <img src={arrowLeft} alt="Image précédente"
-                        className="carousel__arrow-left"
+                        className="carousel__arrow carousel__arrow--left"
                         onClick={() => handleSlideChange(-1)} />
                     <img src={arrowRight} alt="Image suivante"
-                        className="carousel__arrow-right"
+                        className="carousel__arrow carousel__arrow--right"
                         onClick={() => handleSlideChange(+1)} />
                     <span className="carousel__number">{slideNumber + 1}/{filteredLodging.pictures.length}</span>
                 </div>
