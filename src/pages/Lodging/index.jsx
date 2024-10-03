@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { Navigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import lodgings from "../../lodging.json"
 import arrowLeft from "../../assets/arrow-left.svg"
 import arrowRight from "../../assets/arrow-right.svg"
@@ -10,29 +10,39 @@ import starActive from "../../assets/star-active.svg"
 import starInactive from "../../assets/star-inactive.svg"
 
 function Lodging() {
+    const navigate = useNavigate()
     const param = useParams()
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
-    
-    const [starArray, setStarArray] = useState([])
-    useEffect(() => {
-        const newStarArray = []
-        for (let i = 0; i < 5; i++) {
-            if (Number(filteredLodging.rating) > i) {
-                newStarArray.push(true)
-            } else {
-                newStarArray.push(false)
-            }
-        }
-
-        setStarArray(newStarArray)
-    }, [filteredLodging.rating])
 
     // if no lodging as been found in the filter he's redirected
+    useEffect(() => {
+        if (!filteredLodging) {
+            navigate("/error")
+        }
+    }, [filteredLodging, navigate])
+
+    // count the number of stars for the rating
+    const [starArray, setStarArray] = useState([])
+    useEffect(() => {
+        if (filteredLodging) {
+            const newStarArray = []
+            for (let i = 0; i < 5; i++) {
+                if (Number(filteredLodging.rating) > i) {
+                    newStarArray.push(true)
+                } else {
+                    newStarArray.push(false)
+                }
+            }
+
+            setStarArray(newStarArray)
+        }
+    }, [filteredLodging])
+
     if (!filteredLodging) {
-        return <Navigate to={"/error"} />
+        return null;
     }
-    
+
     const handleSlideChange = (i) => {
         let count = (slideNumber + i + filteredLodging.pictures.length) % filteredLodging.pictures.length
         setSlideNumber(count)
@@ -72,9 +82,9 @@ function Lodging() {
                         </div>
                         {/* stars rating */}
                         <div className="rating-container">
-                        {starArray.map((isRate, index) => (
-                            <img src={isRate ? starActive : starInactive} alt="star" key={index}/>                  
-                        ))}
+                            {starArray.map((isRate, index) => (
+                                <img src={isRate ? starActive : starInactive} alt="star" key={index} />
+                            ))}
                         </div>
                     </div>
                 </div>
