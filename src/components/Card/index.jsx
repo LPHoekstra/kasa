@@ -3,12 +3,12 @@ import "./index.scss"
 
 function Card({ card }) {
     return (
-        <article className="card">
+        <figure className="card">
             <Link to={"/logement/" + card.id}>
                 <img src={card.cover} alt={card.title} className="card__img" />
-                <h2 className="card__title">{card.title}</h2>
+                <figcaption className="card__title">{card.title}</figcaption>
             </Link>
-        </article>
+        </figure>
     )
 }
 
