@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./styles/main.scss"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import Header from "./containers/Header"
+import Footer from "./containers/Footer"
 import Error from "./components/Error"
 import Home from "./pages/Home"
 import About from "./pages/About"

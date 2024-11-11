@@ -14,14 +14,8 @@ function Lodging() {
     const param = useParams()
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
-
-    // if no lodging as been found in the filter he's redirected
-    useEffect(() => {
-        if (!filteredLodging) {
-            navigate("/error")
-        }
-    }, [filteredLodging, navigate])
-
+    const hostName = filteredLodging.host.name.split(" ")
+    
     // count the number of stars for the rating
     const [starArray, setStarArray] = useState([])
     useEffect(() => {
@@ -38,6 +32,13 @@ function Lodging() {
             setStarArray(newStarArray)
         }
     }, [filteredLodging])
+
+    // if no lodging as been found in the filter he's redirected
+    useEffect(() => {
+        if (!filteredLodging) {
+            navigate("/error")
+        }
+    }, [filteredLodging, navigate])
 
     if (!filteredLodging) {
         return null;
@@ -76,8 +77,8 @@ function Lodging() {
                     <div className="host-rating-container">
                         <div className="host-container">
                             <p className="host-container__name">
-                                {filteredLodging.host.name.split(" ")[0]}<br />
-                                {filteredLodging.host.name.split(" ")[1]}</p>
+                                {hostName[0]}<br />
+                                {hostName[1]}</p>
                             <img src={filteredLodging.host.picture} alt={filteredLodging.host.name} className="host-container__img" />
                         </div>
                         {/* stars rating */}
