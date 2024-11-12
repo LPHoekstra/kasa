@@ -56,6 +56,7 @@ function Lodging() {
                 {/* carousel */}
                 <div className="carousel">
                     <img src={filteredLodging.pictures[slideNumber]} alt={filteredLodging.title} className="carousel__img" />
+                    {/* if there is more than 1 image, arrows and numerotation is displayed */}
                     {filteredLodging.pictures.length > 1 ?
                         <div>
                             <img src={arrowLeft} alt="Image précédente"
