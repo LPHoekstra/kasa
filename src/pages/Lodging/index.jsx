@@ -14,7 +14,6 @@ function Lodging() {
     const param = useParams()
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
-    const hostName = filteredLodging.host.name.split(" ")
     
     // count the number of stars for the rating
     const [starArray, setStarArray] = useState([])
@@ -28,21 +27,23 @@ function Lodging() {
                     newStarArray.push(false)
                 }
             }
-
+            
             setStarArray(newStarArray)
         }
     }, [filteredLodging])
-
+    
     // if no lodging as been found in the filter he's redirected
     useEffect(() => {
         if (!filteredLodging) {
-            navigate("/error")
+            navigate("/error", {replace: true})
         }
     }, [filteredLodging, navigate])
-
+    
     if (!filteredLodging) {
         return null;
     }
+    
+    const hostName = filteredLodging.host.name.split(" ")
 
     const handleSlideChange = (i) => {
         let count = (slideNumber + i + filteredLodging.pictures.length) % filteredLodging.pictures.length

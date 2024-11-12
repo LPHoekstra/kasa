@@ -24,7 +24,7 @@ function Dropdown({ title, children }) {
                 ref={contentRef}>
                 {children}
             </div>
-            {/* add the space for the content */}
+            {/* add a dynamic space for the content */}
             <div className="dropdown__content-spacing"
                 style={{ height: isOpen ? `${contentHeight}px` : "0" }} />
         </div>
