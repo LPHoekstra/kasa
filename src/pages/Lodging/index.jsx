@@ -14,7 +14,7 @@ function Lodging() {
     const param = useParams()
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
-    
+
     // count the number of stars for the rating
     const [starArray, setStarArray] = useState([])
     useEffect(() => {
@@ -27,22 +27,22 @@ function Lodging() {
                     newStarArray.push(false)
                 }
             }
-            
+
             setStarArray(newStarArray)
         }
     }, [filteredLodging])
-    
+
     // if no lodging as been found in the filter he's redirected
     useEffect(() => {
         if (!filteredLodging) {
-            navigate("/error", {replace: true})
+            navigate("/error", { replace: true })
         }
     }, [filteredLodging, navigate])
-    
+
     if (!filteredLodging) {
         return null;
     }
-    
+
     const hostName = filteredLodging.host.name.split(" ")
 
     const handleSlideChange = (i) => {
@@ -56,13 +56,19 @@ function Lodging() {
                 {/* carousel */}
                 <div className="carousel">
                     <img src={filteredLodging.pictures[slideNumber]} alt={filteredLodging.title} className="carousel__img" />
-                    <img src={arrowLeft} alt="Image précédente"
-                        className="carousel__arrow carousel__arrow--left"
-                        onClick={() => handleSlideChange(-1)} />
-                    <img src={arrowRight} alt="Image suivante"
-                        className="carousel__arrow carousel__arrow--right"
-                        onClick={() => handleSlideChange(+1)} />
-                    <span className="carousel__number">{slideNumber + 1}/{filteredLodging.pictures.length}</span>
+                    {filteredLodging.pictures.length > 1 ?
+                        <div>
+                            <img src={arrowLeft} alt="Image précédente"
+                                className="carousel__arrow carousel__arrow--left"
+                                onClick={() => handleSlideChange(-1)} />
+                            <img src={arrowRight} alt="Image suivante"
+                                className="carousel__arrow carousel__arrow--right"
+                                onClick={() => handleSlideChange(+1)} />
+                            <span className="carousel__number">{slideNumber + 1}/{filteredLodging.pictures.length}</span>
+                        </div>
+                        :
+                        null
+                    }
                 </div>
                 {/* information about the accommodation */}
                 <div className="location-and-host-container">

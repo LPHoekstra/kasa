@@ -12,7 +12,7 @@ function Home() {
 
                 <div className="card-wrapper">
                     {lodgings.slice(0, 6).map((lodging) => (
-                        <Card key={lodging.id} card={lodging} />
+                        <Card key={lodging.id} lodging={lodging} />
                     ))}
                 </div>
             </section>
