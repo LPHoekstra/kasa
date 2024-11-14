@@ -15,6 +15,13 @@ function Lodging() {
     const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
 
+    // if no lodging as been found in the filter he's redirected
+    useEffect(() => {
+        if (!filteredLodging) {
+            navigate("/error", { replace: true })
+        }
+    }, [filteredLodging, navigate])
+
     // count the number of stars for the rating
     const [starArray, setStarArray] = useState([])
     useEffect(() => {
@@ -31,13 +38,6 @@ function Lodging() {
             setStarArray(newStarArray)
         }
     }, [filteredLodging])
-
-    // if no lodging as been found in the filter he's redirected
-    useEffect(() => {
-        if (!filteredLodging) {
-            navigate("/error", { replace: true })
-        }
-    }, [filteredLodging, navigate])
 
     if (!filteredLodging) {
         return null;
