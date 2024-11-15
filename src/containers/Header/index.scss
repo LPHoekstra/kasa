@@ -28,6 +28,10 @@
         }
         
         & > a {
+            @include small-screen() {
+                text-transform: uppercase;
+            }
+
             &:hover {
                 text-decoration: underline;
             }
