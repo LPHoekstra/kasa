@@ -25,59 +25,6 @@
     }
 }
 
-.carousel {
-    position: relative;
-    height: 25.938em;
-
-    @include small-screen() {
-        height: 15.938em;
-    }
-
-    &__img {
-        @include cover-img();
-        border-radius: 25px;
-    }
-
-    &__arrow {
-        @include center-absolute ();
-
-        @include small-screen() {
-            height: 5.33vw;
-            width: 3.2vw;
-        }
-
-        &--left {
-            left: 1.438em;
-
-            @include small-screen() {
-                left: 1.6vw;
-            }
-        }
-
-        &--right {
-            right: 1.438em;
-
-            @include small-screen() {
-                right: 1.6vw;
-            }
-        }
-    }
-
-    &__number {
-        position: absolute;
-        bottom: 1.563em;
-        right: 50%;
-        transform: translateX(50%);
-        font-size: 1.125em;
-        font-weight: 500;
-        color: $secondary-color;
-
-        @include small-screen() {
-            display: none;
-        }
-    }
-}
-
 .location-and-host-container {
     @include flex ($justify: space-between);
     margin-top: 1.875em;

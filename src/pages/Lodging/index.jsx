@@ -1,18 +1,16 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { useNavigate, useParams } from "react-router-dom"
 import lodgings from "../../lodging.json"
-import arrowLeft from "../../assets/arrow-left.svg"
-import arrowRight from "../../assets/arrow-right.svg"
 import "./index.scss"
 import Dropdown from "../../components/Dropdown"
 import { useEffect, useState } from "react"
 import starActive from "../../assets/star-active.svg"
 import starInactive from "../../assets/star-inactive.svg"
+import Carousel from "../../components/Carousel"
 
 function Lodging() {
     const navigate = useNavigate()
     const param = useParams()
-    const [slideNumber, setSlideNumber] = useState(0)
     const filteredLodging = lodgings.filter(lodging => param.id === lodging.id)[0]
 
     // if no lodging as been found in the filter he's redirected
@@ -45,32 +43,11 @@ function Lodging() {
 
     const hostName = filteredLodging.host.name.split(" ")
 
-    const handleSlideChange = (i) => {
-        let count = (slideNumber + i + filteredLodging.pictures.length) % filteredLodging.pictures.length
-        setSlideNumber(count)
-    }
-
     return (
         <main>
             <section className="lodgement-section">
                 {/* carousel */}
-                <div className="carousel">
-                    <img src={filteredLodging.pictures[slideNumber]} alt={filteredLodging.title} className="carousel__img" />
-                    {/* if there is more than 1 image, arrows and numerotation is displayed */}
-                    {filteredLodging.pictures.length > 1 ?
-                        <div>
-                            <img src={arrowLeft} alt="Image précédente"
-                                className="carousel__arrow carousel__arrow--left"
-                                onClick={() => handleSlideChange(-1)} />
-                            <img src={arrowRight} alt="Image suivante"
-                                className="carousel__arrow carousel__arrow--right"
-                                onClick={() => handleSlideChange(+1)} />
-                            <span className="carousel__number">{slideNumber + 1}/{filteredLodging.pictures.length}</span>
-                        </div>
-                        :
-                        null
-                    }
-                </div>
+                <Carousel filteredLodging={filteredLodging}/>
                 {/* information about the accommodation */}
                 <div className="location-and-host-container">
                     <div className="location-container">
