@@ -28,17 +28,3 @@
     width: 100%;
     height: 100%;
 }
-
-@mixin dropdown-small-screen() {
-    &__bar {
-        @include small-screen() {
-            padding: 0.625em;
-        }
-    }
-
-    &__title {
-        @include small-screen() {
-            font-size: 0.813em;
-        }
-    }
-}

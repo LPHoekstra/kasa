@@ -6,23 +6,47 @@
     position: relative;
     overflow: hidden;
 
+    &--about-page {
+        margin-top: 1.875em;
+
+        @include small-screen() {
+            margin-top: 1.25em;
+        }
+    }
+
     &__bar {
         @include flex ($justify: space-between, $align: center);
         background-color: $main-color;
         border-radius: 0.313em;
+        
+        @include small-screen() {
+            padding: 0.625em;
+        }
 
-        // @include small-screen() {
-        //     padding: 0.625em;
-        // }
+        &--lodging-page {
+            padding: 0.625em 1.25em 0.625em 0.625em;
+        }
+
+        &--about-page {
+            padding: 0.625em 0.938em;
+        }
     }
 
     &__title {
         font-weight: 700;
         color: $secondary-color;
 
-        // @include small-screen() {
-        //     font-size: 0.813em;
-        // }
+        @include small-screen() {
+            font-size: 0.813em;
+        }
+
+        &--lodging-page {
+            font-size: 1.125em;
+        }
+
+        &--about-page {
+            font-size: 1.5em;
+        }
     }
 
     &__content {

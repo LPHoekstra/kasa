@@ -15,25 +15,6 @@
     @include small-screen() {
         margin: 1.188em auto;
     }
-
-    // specifique size to the About page
-    .dropdown {
-        margin-top: 1.875em;
-
-        @include small-screen() {
-            margin-top: 1.25em;
-        }
-
-        &__bar {
-            padding: 0.625em 0.938em;
-        }
-
-        &__title {
-            font-size: 1.5em;
-        }
-
-        @include dropdown-small-screen();
-    }
 }
 
 .dropdown-container {
