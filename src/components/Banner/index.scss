@@ -1,0 +1,70 @@
+@use "../../styles/mixins" as *;
+
+.banner {
+    position: relative;
+    height: 14em;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.563em;
+
+    @include small-screen() {
+        height: 7em;
+        box-shadow: none;
+        border-radius: 0.625em;
+    }
+
+    &-home {
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+        &::after {
+            background-color: rgba($color: #000000, $alpha: 0.60);
+        }
+    }
+
+    &-about {
+        &::after {
+            background-color: rgba($color: #000000, $alpha: 0.30);
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__img {
+        @include cover-img();
+    }
+
+    &__title {
+        position: absolute;
+        display: inline;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        font-weight: 700;
+        font-size: 3em;
+        color: #fff;
+        text-shadow:
+            -1px -1px 0 black, /* for text line */
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black,
+            0 4px 4px rgba(0, 0, 0, 0.25); /* for the drop shadow */
+
+        @include small-screen() {
+            text-align: left;
+            font-size: 1.5em;
+            text-shadow: none;
+            max-width: 9.5em;
+            margin-left: 1em;
+        }
+    }
+}

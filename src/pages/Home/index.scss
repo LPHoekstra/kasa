@@ -1,65 +1,12 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-@mixin background-header () {
-    border-radius: 1.563em;
-    height: 14em;
-    width: 100%;
+.home-section {
+    max-width: 1240px;
+    margin: 3.125em auto 0 auto;
 
-    @include small-screen() {
-        height: 7em;
-        border-radius: 0.625em;
-    }
-}
-
-.header-wrapper {
-    position: relative;
-    background-image: url("../../assets/background-image-main-title.png");
-    background-position: center;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    margin-top: 3.125em;
-    margin-bottom: 2.625em;
-    @include max-width();
-    @include flex($justify: center, $align: center);
-    @include background-header();
-    
     @include small-screen() {
         margin-top: 1.688em;
-        margin-bottom: 1.375em;
-        box-shadow: none;
-        padding-left: 4.26vw;
-        justify-content: flex-start;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.6;
-        background-color: #000;
-        @include background-header();
-    }
-
-    &__title {
-        z-index: 1;
-        font-weight: 700;
-        font-size: 3em;
-        color: #fff;
-        text-shadow:
-            -1px -1px 0 black,
-            /* for text line */
-            1px -1px 0 black,
-            -1px 1px 0 black,
-            1px 1px 0 black,
-            0 4px 4px rgba(0, 0, 0, 0.25);
-        /* for the drop shadow */
-
-        @include small-screen() {
-            font-size: 1.5em;
-            text-shadow: none;
-            max-width: 9.5em;
-        }
     }
 }
 
@@ -67,6 +14,7 @@
     background-color: #F6F6F6;
     border-radius: 1.563em;
     display: grid;
+    margin-top: 2.625em;
     grid-template: repeat(2, 1fr) / repeat(3, 1fr);
     column-gap: min(4.16vw, 3.75em);
     row-gap: min(3.47vw, 3.125em);
@@ -81,5 +29,6 @@
         padding: 0;
         background-color: $secondary-color;
         row-gap: 5.33vw;
+        margin-top: 1.375em;
     }
 }

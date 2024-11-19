@@ -1,14 +1,13 @@
 import "./index.scss"
 import lodgings from "./../../lodging.json"
 import Card from "../../components/Card"
+import Banner from "../../components/Banner"
 
 function Home() {
     return (
         <main>
-            <section>
-                <div className="header-wrapper">
-                    <h1 className="header-wrapper__title">Chez vous, partout et ailleurs</h1>
-                </div>
+            <section className="home-section">
+                <Banner title="Chez vous, partout et ailleurs" />
 
                 <div className="card-wrapper">
                     {lodgings.slice(0, 6).map((lodging) => (

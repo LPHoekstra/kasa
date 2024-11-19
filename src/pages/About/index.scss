@@ -16,32 +16,6 @@
         margin: 1.188em auto;
     }
 
-    &__img-container {
-        position: relative;
-        height: 14em;
-        width: 100%;
-
-        @include small-screen() {
-            height: 7em;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba($color: #000000, $alpha: 0.30);
-            @include border-radius-about-img();
-        }
-    }
-
-    &__img {
-        @include cover-img();
-        @include border-radius-about-img();
-    }
-
     // specifique size to the About page
     .dropdown {
         margin-top: 1.875em;

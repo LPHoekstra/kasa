@@ -1,14 +1,12 @@
 import "./index.scss"
-import mainImg from "../../assets/background-image-about.png"
 import Dropdown from "../../components/Dropdown"
+import Banner from "../../components/Banner"
 
 function About() {
     return (
         <main>
             <section className="about-section">
-                <div className="about-section__img-container">
-                    <img src={mainImg} alt="test" className="about-section__img" />
-                </div>
+                <Banner />
                 <div className="dropdown-container">
                     <Dropdown title="Fiabilité">
                         <p>
