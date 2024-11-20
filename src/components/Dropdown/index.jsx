@@ -5,14 +5,14 @@ import { useLocation } from "react-router-dom"
 
 function Dropdown({ title, content }) {
     const [isOpen, setIsOpen] = useState(false)
-    const [contentHeight, setContentHeight] = useState(0)
+    const contentHeightRef = useRef(0)
     const contentRef = useRef(null)
     const location = useLocation()
 
     useEffect(() => {
         const height = contentRef.current.scrollHeight
-        setContentHeight(height)
-    }, [isOpen])
+        contentHeightRef.current = height
+    }, [])
 
     // set specific css class according to the route
     const pageClass = useMemo(() => {
@@ -64,7 +64,7 @@ function Dropdown({ title, content }) {
             </div>
             {/* add a dynamic space for the content */}
             <div className="dropdown__content-spacing"
-                style={{ height: isOpen ? `${contentHeight}px` : "0" }} 
+                style={{ height: isOpen ? `${contentHeightRef.current}px` : "0" }} 
             />
         </div>
     )
