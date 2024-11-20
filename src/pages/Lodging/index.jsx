@@ -75,16 +75,8 @@ function Lodging() {
                     </div>
                 </div>
                 <div className="dropdown-bar">
-                    <Dropdown title="Description">
-                        <p>{filteredLodging.description}</p>
-                    </Dropdown>
-                    <Dropdown title="Equipements">
-                        <ul>
-                            {filteredLodging.equipments.map(equipment => (
-                                <li key={equipment}>{equipment}</li>
-                            ))}
-                        </ul>
-                    </Dropdown>
+                    <Dropdown title="Description" content={filteredLodging.description} />
+                    <Dropdown title="Equipements" content={filteredLodging.equipments} />
                 </div>
             </section>
         </main>
