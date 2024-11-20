@@ -1,49 +1,29 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { useNavigate, useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import lodgings from "../../lodging.json"
 import "./index.scss"
 import Dropdown from "../../components/Dropdown"
-import { useEffect, useMemo } from "react"
+import { useMemo } from "react"
 import starActive from "../../assets/star-active.svg"
 import starInactive from "../../assets/star-inactive.svg"
 import Carousel from "../../components/Carousel"
 
-// fix rerender of dropdown when carousel change is img
+// fix rerender of dropdown when carousel image change
 function Lodging() {
-    const navigate = useNavigate()
     const param = useParams()
 
     const filteredLodging = useMemo(() => {
         return lodgings.filter(lodging => param.id === lodging.id)[0]
     }, [param.id])
 
-    // if no lodging as been found in the filter he's redirected
-    useEffect(() => {
-        if (!filteredLodging) {
-            navigate("/error", { replace: true })
-        }
-    }, [filteredLodging, navigate])
-
-    // count the number of stars for the rating
-    const starArray = useMemo(() => {
-        if (filteredLodging) {
-            const newStarArray = []
-            for (let i = 0; i < 5; i++) {
-                if (Number(filteredLodging.rating) > i) {
-                    newStarArray.push(true)
-                } else {
-                    newStarArray.push(false)
-                }
-            }
-
-            return newStarArray
-        }
-    }, [filteredLodging])
-
+    // if no lodging as been found in the filter user is redirected
     if (!filteredLodging) {
-        return null;
+        return <Navigate to={"/error"} replace />
     }
 
+    // count the number of stars for the rating
+    const starArray = Array.from({ length: 5 }, (_, i) => i < Number(filteredLodging.rating));
+    
     const hostName = filteredLodging.host.name.split(" ")
 
     return (

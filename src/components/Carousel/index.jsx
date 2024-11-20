@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import "./index.scss"
 import arrowLeft from "../../assets/arrow-left.svg"
 import arrowRight from "../../assets/arrow-right.svg"
@@ -6,10 +6,10 @@ import arrowRight from "../../assets/arrow-right.svg"
 function Carousel({ filteredLodging }) {
     const [slideNumber, setSlideNumber] = useState(0)
 
-    const handleSlideChange = (i) => {
+    const handleSlideChange = useCallback((i) => {
         let count = (slideNumber + i + filteredLodging.pictures.length) % filteredLodging.pictures.length
         setSlideNumber(count)
-    }
+    }, [filteredLodging.pictures.length, slideNumber])
 
     return (
         <div className="carousel">
