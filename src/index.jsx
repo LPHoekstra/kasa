@@ -11,7 +11,8 @@ import Lodging from "./pages/Lodging"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <Router>
       <Header />
       <Routes>
@@ -22,5 +23,6 @@ root.render(
       </Routes>
     </Router>
     <Footer />
-  </React.StrictMode>
+  </>
+  // </React.StrictMode>
 );
